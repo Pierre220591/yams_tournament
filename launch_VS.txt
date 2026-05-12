@@ -1,0 +1,22 @@
+🎮 Commandes pour lancer des parties
+Duel	Commande à coller dans le terminal
+Agent vs Agent<br>(ex: Expert vs Beginner)	bash<br>python -c "from tournament.manager import run_match; print(run_match('expert', 'beginner', games=10))"<br>
+LLM vs Agent<br>(ex: phi3 vs Random)	bash<br>python -c "from tournament.manager import run_match; print(run_match('llm', 'random', games=10, prompt1='Tu es un joueur de Yams. Optimise ton score.'))"<br>
+Agent vs LLM<br>(ex: Greedy vs phi3)	bash<br>python -c "from tournament.manager import run_match; print(run_match('greedy', 'llm', games=10, prompt2='Tu es un joueur de Yams. Optimise ton score.'))"<br>
+LLM vs LLM<br>(ex: phi3 débutant vs phi3 expert)	bash<br>python -c "from tournament.manager import run_match; print(run_match('llm', 'llm', games=10, prompt1='Tu es imprudent, tu vises le Yams coûte que coûte.', prompt2='Tu es méthodique, tu maximises ton espérance de points.'))"<br>
+🧠 Paramètres personnalisables
+games=10 → nombre de parties (tu peux mettre 100, 1000, etc.)
+
+prompt1 → comportement du joueur LLM côté A1
+
+prompt2 → comportement du joueur LLM côté A2
+
+📦 Export CSV
+Tous ces appels génèrent automatiquement un fichier CSV dans :
+
+Code
+~/Documents/yams_tournament/data/exports/
+Tu peux le copier dans le dossier racine avec :
+
+bash
+cp data/exports/results_YYYYMMDD_HHMMSS.csv results_duel.csv

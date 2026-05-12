@@ -1,0 +1,93 @@
+📘 Documentation complète — Yams Tournament
+🎯 Objectif de l’application
+Yams Tournament est une application Python permettant de simuler des parties de Yams entre différents types d’agents (IA codées en dur ou modèles de langage locaux). Elle offre :
+
+Une interface graphique pour jouer en humain vs humain ou IA vs IA.
+
+Un moteur de simulation pour générer des milliers de parties automatiquement.
+
+Un système d’export des résultats détaillés (CSV) pour analyse statistique.
+
+Un cadre expérimental pour tester des hypothèses comportementales (ex. "chance du débutant").
+
+🧱 Architecture du projet
+Code
+yams_tournament/
+├── agents/              # Agents codés en dur + LLM
+├── core/                # Moteur du jeu (dés, scoring, probabilités)
+├── tournament/          # Orchestration des parties et export CSV
+├── ui/                  # Interface graphique PyQt5
+├── scripts/             # Scripts utilitaires (ex: simulate_csv.py)
+├── data/exports/        # Résultats des simulations
+├── simulate_llm.py      # Duel entre deux agents LLM
+├── run.py               # Point d’entrée principal
+├── README.md            # Instructions de base
+└── Documentation/       # Ce fichier + ressources complémentaires
+🧠 Types d’agents disponibles
+Agent	Description	Comportement
+🟢 RandomAgent	Hasard pur	Choix aléatoires à chaque tour
+🟡 GreedyAgent	Opportuniste	Garde les dés majoritaires, maximise le score immédiat
+🔵 ExpertAgent	Probabiliste	Optimise l’espérance de points, utilise les probabilités
+🔴 BeginnerAgent	Risqué, irrationnel	Vise les combinaisons spectaculaires, relance agressive
+⚫ HardcodedAgent	Statique	Comportement fixe (à confirmer selon implémentation)
+🧠 LLMAgent	Modèle de langage local	Répond à des prompts décrivant le contexte de jeu
+🎮 Modes de simulation
+1. Interface graphique (PyQt5)
+Lancement via python run.py
+
+Permet de jouer en humain vs humain ou IA vs IA
+
+Affiche les dés, les probabilités, la grille de score
+
+2. Simulation en ligne de commande
+Lancement via simulate_llm.py ou tournament/manager.py
+
+Permet de faire jouer deux agents sur N parties
+
+Résultats exportés automatiquement en CSV
+
+📦 Format des résultats CSV
+Chaque ligne du fichier contient :
+
+csv
+game_id,turn_number,player,roll_number,dice_before,kept_indices,dice_after,category,score
+Et une ligne finale résume la partie :
+
+csv
+game_id,turn_number=END,player=SUMMARY,...,category=TOTALS,score="A1: 162, A2: 145, winner: A1"
+🧪 Expériences comportementales proposées
+Duel	Objectif expérimental	Commande recommandée
+Beginner vs Expert	Étudier la variance et la "chance du débutant"	games=100
+Greedy vs Expert	Audace vs prudence	games=300
+Random vs Greedy	Impact minimal d’une stratégie naïve	games=200
+Random vs Expert	Calibration du niveau de base	games=150
+Greedy vs Beginner	Cohérence naïve vs chaos orienté	games=250
+Hardcoded vs Expert	Évaluer un comportement figé	games=150
+🧠 Utilisation pédagogique
+L’application peut être utilisée pour :
+
+Enseigner les probabilités et la prise de décision.
+
+Étudier les biais cognitifs dans les jeux de hasard.
+
+Simuler des comportements humains (débutant, expert, opportuniste).
+
+Générer des données pour analyse en Python, R, Excel, etc.
+
+🛠️ Installation
+bash
+git clone https://github.com/ton-repo/yams_tournament.git
+cd yams_tournament
+pip install -r requirements.txt
+python run.py  # pour lancer l’interface
+📁 Export des données
+Les fichiers CSV sont générés automatiquement dans data/exports/, puis copiés dans le dossier racine pour analyse.
+
+🧩 Extensions possibles
+Ajout d’un RiskyAgent évolutif (débutant qui apprend).
+
+Intégration de modèles LLM plus puissants (Qwen, Mistral, etc.).
+
+Export vers SQLite pour requêtes plus complexes.
+
+Visualisation des résultats (histogrammes, courbes, heatmaps).

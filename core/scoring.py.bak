@@ -1,0 +1,62 @@
+from collections import Counter
+from typing import Dict, List
+
+# Catégories gérées (Yams/Yahtzee "basique" sans 1..6)
+CATEGORIES = [
+    "brelan",
+    "carré",
+    "full",
+    "petite_suite",
+    "grande_suite",
+    "yams",
+    "chance",
+]
+
+FIXED_SCORES = {
+    "full": 25,
+    "petite_suite": 30,
+    "grande_suite": 40,
+    "yams": 50,
+}
+
+def _is_full(counts: Counter) -> bool:
+    # exactement 3 + 2
+    groups = sorted(counts.values(), reverse=True)
+    return groups == [3,2]
+
+def _has_n_of_a_kind(counts: Counter, n: int) -> bool:
+    return any(v >= n for v in counts.values())
+
+def _is_small_straight(vals: set) -> bool:
+    return (
+        {1,2,3,4}.issubset(vals) or
+        {2,3,4,5}.issubset(vals) or
+        {3,4,5,6}.issubset(vals)
+    )
+
+def _is_large_straight(vals: set) -> bool:
+    return vals == {1,2,3,4,5} or vals == {2,3,4,5,6}
+
+def score_category(category: str, dice: List[int]) -> int:
+    dice = list(dice)
+    counts = Counter(dice)
+    vals = set(dice)
+    s = sum(dice)
+    if category == "brelan":
+        return s if _has_n_of_a_kind(counts, 3) else 0
+    if category == "carré":
+        return s if _has_n_of_a_kind(counts, 4) else 0
+    if category == "full":
+        return FIXED_SCORES["full"] if _is_full(counts) else 0
+    if category == "petite_suite":
+        return FIXED_SCORES["petite_suite"] if _is_small_straight(vals) else 0
+    if category == "grande_suite":
+        return FIXED_SCORES["grande_suite"] if _is_large_straight(vals) else 0
+    if category == "yams":
+        return FIXED_SCORES["yams"] if _has_n_of_a_kind(counts, 5) else 0
+    if category == "chance":
+        return s
+    raise ValueError(f"Catégorie inconnue: {category}")
+
+def points_for_all(dice: List[int]) -> Dict[str, int]:
+    return {c: score_category(c, dice) for c in CATEGORIES}

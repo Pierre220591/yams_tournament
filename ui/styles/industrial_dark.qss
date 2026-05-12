@@ -1,0 +1,23 @@
+QWidget { background-color:#1a232b; color:#e6edf3; font-family:-apple-system,Inter,"SF Pro Text","Segoe UI","Ubuntu"; font-size:14px; }
+QFrame, QGroupBox, QToolBox, QTabWidget::pane { background-color:#212b33; border:1px solid #2f3a44; border-radius:8px; }
+QGroupBox { margin-top:20px; }
+QGroupBox::title { subcontrol-origin: margin; subcontrol-position: top left; left:10px; padding:0 6px; background-color:#1a232b; color:#e6edf3; }
+QPushButton { background-color:#19c37d; color:#0b1116; border:1px solid #19c37d; border-radius:8px; padding:6px 12px; }
+QPushButton:hover { background-color:#1fd28a; }
+QPushButton:pressed { background-color:#16b16f; }
+QPushButton:disabled { background-color:#2a343c; color:#73808c; border:1px solid #2a343c; }
+QLineEdit, QTextEdit, QPlainTextEdit, QSpinBox, QDoubleSpinBox, QComboBox, QListView, QTreeView { background-color:#212b33; border:1px solid #2f3a44; border-radius:8px; padding:6px 8px; selection-background-color:#2b6b50; selection-color:#e6edf3; }
+QComboBox QAbstractItemView { background-color:#212b33; selection-background-color:#2b6b50; }
+QTableView { background-color:#212b33; border:1px solid #2f3a44; border-radius:8px; gridline-color:#2f3a44; selection-background-color:#2b6b50; selection-color:#e6edf3; }
+QHeaderView::section { background-color:#26313a; color:#e6edf3; border:none; padding:6px 8px; }
+QTabBar::tab { background-color:#26313a; color:#e6edf3; padding:6px 10px; border-top-left-radius:8px; border-top-right-radius:8px; margin-right:2px; }
+QTabBar::tab:selected { background-color:#212b33; }
+QScrollBar:vertical { background:#212b33; width:10px; margin:4px; border-radius:5px; }
+QScrollBar::handle:vertical { background:#2f3a44; border-radius:5px; }
+QScrollBar:horizontal { background:#212b33; height:10px; margin:4px; border-radius:5px; }
+QScrollBar::handle:horizontal { background:#2f3a44; border-radius:5px; }
+QToolTip { background-color:#26313a; color:#e6edf3; border:1px solid #2f3a44; }
+QMenuBar { background-color:#26313a; color:#e6edf3; }
+QMenuBar::item:selected { background:#2f3a44; }
+QStatusBar { background-color:#26313a; color:#e6edf3; }
+QLabel { background: transparent; }

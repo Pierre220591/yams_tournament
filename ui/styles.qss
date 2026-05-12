@@ -1,0 +1,8 @@
+QWidget { font-size: 14px; }
+#DiceLabel {
+    min-width: 80px; min-height: 80px;
+    border: 2px solid #b9b9b9; border-radius: 8px;
+    background: #f5f5f5; font: 700 28px "Helvetica";
+    qproperty-alignment: AlignCenter;
+}
+#ProbBox { background: #f2f2f2; border: 1px solid #ddd; border-radius: 6px; }
