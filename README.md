@@ -28,17 +28,18 @@ s'affronter sur des milliers de parties.
 Apres des tournois massifs orchestres par le Tournament Manager, 
 les chiffres sont tombes :
 
-+-----------------------+-----------------------+-----------------------------+
-| Confrontation         | Resultat              | Explication                 |
-+-----------------------+-----------------------+-----------------------------+
-| Expert vs Debutant    | Victoire Debutant     | L'Expert sacrifie trop de   |
-|                       | (56.4%)               | points de suites en visant  |
-|                       |                       | uniquement le Yams.         |
-+-----------------------+-----------------------+-----------------------------+
-| IA (Phi-3) vs Debutant| Defaite Totale        | L'IA gere mal les regles de |
-|                       | (0% de win)           | calcul et                   |
-|                       |                       | hallucine parfois ses des.  |
-+-----------------------+-----------------------+-----------------------------+
+
+### Expert vs Débutant
+
+* **Résultat :** Victoire du Débutant (56.4%)
+* **Explication :** L'Expert sacrifie trop de points de suites en visant uniquement le Yams.
+
+---
+
+### IA (Phi-3) vs Débutant
+
+* **Résultat :** Défaite Totale (0% de win)
+* **Explication :** L'IA gère mal les règles de calcul et hallucine parfois ses dés.
 
 Note sur les LLM : L'agent LLM utilise subprocess pour communiquer avec 
 Ollama. Pour des resultats probants, des modeles plus massifs seraient 
